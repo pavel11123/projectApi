@@ -5,13 +5,15 @@ let cloneCard, // clone card for template in fetch
   cardTime, // time
   cardRating, // rating
   cardGenres, // genres
-  cardYear; // year
+  cardYear, // year
+  inputId; // input__id-hidden
 
 const filmGrid = document.querySelector(".film-grid"); // search film-grid for clone template
 
-// const baseUrl = "https://kinopoiskapiunofficial.tech/api/v2.2/films"; // link rest API
+const baseUrl = "https://kinopoiskapiunofficial.tech/api/v2.2/films"; // link rest API
 const apiKey = "8c8e1a50-6322-4135-8875-5d40a5420d86";
 // const apiKey = "0859f8b3-b98a-4d7e-a652-014497fbe4d2";
+// const apiKey = "86417ac8-d993-4345-aec1-1b0aed2d0c29";
 let responseGetFilms;
 async function getFilms() {
   try {
@@ -24,7 +26,8 @@ async function getFilms() {
         "Content-Type": "application/json",
       },
     });
-    responseGetFilms = response.status;
+
+    responseGetFilms = response.status; // check response status
 
     const dataJson = await response.json();
     const dataFilms = dataJson.films;
@@ -63,6 +66,8 @@ async function getFilms() {
       cardGenres.textContent = arrGenre.join(""); // use join because delete default ","
 
       // console.log(el.filmId);
+      inputId = templateCard.content.querySelector(".input__id-hidden");
+      inputId.value = el.filmId;
 
       cloneCard = templateCard.content.cloneNode(true); // Important! our template cloneNode
       filmGrid.appendChild(cloneCard); // append clone
