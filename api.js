@@ -9,8 +9,10 @@ let cloneCard, // clone card for template in fetch
 
 const filmGrid = document.querySelector(".film-grid"); // search film-grid for clone template
 
-const baseUrl = "https://kinopoiskapiunofficial.tech/api/v2.2/films"; // link rest API
-const apiKey = "0859f8b3-b98a-4d7e-a652-014497fbe4d2";
+// const baseUrl = "https://kinopoiskapiunofficial.tech/api/v2.2/films"; // link rest API
+const apiKey = "8c8e1a50-6322-4135-8875-5d40a5420d86";
+// const apiKey = "0859f8b3-b98a-4d7e-a652-014497fbe4d2";
+let responseGetFilms;
 async function getFilms() {
   try {
     // response API , use fetch and transfer url + headers
@@ -22,6 +24,8 @@ async function getFilms() {
         "Content-Type": "application/json",
       },
     });
+    responseGetFilms = response.status;
+
     const dataJson = await response.json();
     const dataFilms = dataJson.films;
 
@@ -36,17 +40,17 @@ async function getFilms() {
         : (cardName.textContent = el.nameRu);
 
       cardYear = templateCard.content.querySelector(".card__year");
-      el.year
+      el.year // check year film
         ? (cardYear.textContent = el.year)
         : (cardYear.textContent = "year");
 
       cardTime = templateCard.content.querySelector(".card__time");
-      el.filmLength
+      el.filmLength // check time film
         ? (cardTime.textContent = el.filmLength)
         : (cardTime.textContent = "time");
 
       cardRating = templateCard.content.querySelector(".card__rating");
-      el.rating
+      el.rating // check rating film
         ? (cardRating.textContent = el.rating)
         : (cardRating.textContent = "0");
 
@@ -58,15 +62,18 @@ async function getFilms() {
       });
       cardGenres.textContent = arrGenre.join(""); // use join because delete default ","
 
+      // console.log(el.filmId);
+
       cloneCard = templateCard.content.cloneNode(true); // Important! our template cloneNode
       filmGrid.appendChild(cloneCard); // append clone
     });
   } catch (error) {
     // check error
-    console.log(error);
+    console.log("ERROR------>" + " " + error);
   }
 }
 
+// function for get information film
 async function getInfoFilms() {
   try {
     const response = await fetch(`${baseUrl}/505898`, {
@@ -79,6 +86,6 @@ async function getInfoFilms() {
     const dataInfoFilms = await response.json();
   } catch (error) {
     // check error
-    console.log(error);
+    console.log("ERROR------>" + " " + error);
   }
 }
