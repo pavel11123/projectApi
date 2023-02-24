@@ -3,11 +3,19 @@ const modal = document.querySelector(".modal-wrapper");
 async function openModal() {
   // console.log(id);
   const cardFilm = document.querySelectorAll(".card__film");
+  let modalName;
 
   cardFilm.forEach((element) => {
     element.addEventListener("click", (e) => {
       modal.classList.add("modal-show");
-      console.log(e.target.parentNode.parentNode.firstElementChild.value);
+      // console.log(e.target.parentNode.parentNode.firstElementChild.value);
+
+      modalName = document.querySelector(".modal__card-name");
+      getInfoFilms(
+        e.target.parentNode.parentNode.firstElementChild.value,
+        modalName
+      );
+      // console.log(modalName);
     });
   });
 

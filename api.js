@@ -79,9 +79,9 @@ async function getFilms() {
 }
 
 // function for get information film
-async function getInfoFilms() {
+async function getInfoFilms(cardFilmId, modalName) {
   try {
-    const response = await fetch(`${baseUrl}/505898`, {
+    const response = await fetch(`${baseUrl}/${cardFilmId}`, {
       method: "GET",
       headers: {
         "X-API-KEY": `${apiKey}`, // key
@@ -89,6 +89,9 @@ async function getInfoFilms() {
       },
     });
     const dataInfoFilms = await response.json();
+    console.log(dataInfoFilms);
+
+    modalName.innerText = dataInfoFilms.nameRu;
   } catch (error) {
     // check error
     console.log("ERROR------>" + " " + error);
