@@ -79,7 +79,7 @@ async function getFilms() {
 }
 
 // function for get information film
-async function getInfoFilms(cardFilmId, modalName) {
+async function getInfoFilms(cardFilmId, modalName, modalDescription) {
   try {
     const response = await fetch(`${baseUrl}/${cardFilmId}`, {
       method: "GET",
@@ -89,9 +89,10 @@ async function getInfoFilms(cardFilmId, modalName) {
       },
     });
     const dataInfoFilms = await response.json();
-    console.log(dataInfoFilms);
+    // console.log(dataInfoFilms);
 
     modalName.innerText = dataInfoFilms.nameRu;
+    modalDescription.innerText = dataInfoFilms.description;
   } catch (error) {
     // check error
     console.log("ERROR------>" + " " + error);

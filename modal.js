@@ -8,14 +8,14 @@ async function openModal() {
   cardFilm.forEach((element) => {
     element.addEventListener("click", (e) => {
       modal.classList.add("modal-show");
-      // console.log(e.target.parentNode.parentNode.firstElementChild.value);
 
       modalName = document.querySelector(".modal__card-name");
+      modalDescription = document.querySelector(".modal__card-description");
       getInfoFilms(
         e.target.parentNode.parentNode.firstElementChild.value,
-        modalName
+        modalName,
+        modalDescription
       );
-      // console.log(modalName);
     });
   });
 
