@@ -1,0 +1,99 @@
+@use "sass:math";
+
+@import "./components/assets/fonts";
+@import "./components/assets/mixins";
+@import "./components/assets/variables";
+@import "./components/assets/base";
+
+/*------------------ОБОЛОЧКА------------------*/
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: $backgroundBlack;
+}
+
+[class*="__container"] {
+  width: 100%;
+  max-width: rem(1170);
+  margin: 0 auto;
+  padding: 0 rem(15);
+}
+/*------------------ОБОЛОЧКА------------------*/
+/*------------------preloader------------------*/
+@import "./components/preloader/preloader";
+/*------------------preloader------------------*/
+
+/*------------------HEADER------------------*/
+@import "./components/header/header";
+
+/*------------------HEADER------------------*/
+
+/*------------------MAIN------------------*/
+.main {
+  flex: 1 1 auto;
+}
+
+/*------------------CARD------------------*/
+@import "./components/cardList/cardList";
+/*------------------CARD------------------*/
+
+/*------------------MAIN------------------*/
+
+/*------------------FOOTER------------------*/
+@import "./components/footer/footer";
+/*------------------FOOTER------------------*/
+
+/*------------------POPUP------------------*/
+@import "./components/popup/popup";
+/*------------------POPUP------------------*/
+
+/* modal card */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: none;
+}
+
+.modal__card {
+  padding: 15px;
+  background-color: #ffffff;
+  max-width: 400px;
+  margin: auto;
+}
+
+/* modal ERROR */
+.modal__error-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: none;
+}
+
+.modal__error {
+  padding: 15px;
+  background-color: #ffffff;
+  max-width: 400px;
+  margin: auto;
+}
+
+.modal-show {
+  display: flex;
+}

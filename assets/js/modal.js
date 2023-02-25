@@ -8,6 +8,7 @@ async function openModal() {
   cardFilm.forEach((element) => {
     element.addEventListener("click", (e) => {
       modal.classList.add("modal-show");
+      document.querySelector("#phone__menu-id-body").style.overflow = "hidden";
 
       modalName = document.querySelector(".modal__card-name");
       modalDescription = document.querySelector(".modal__card-description");
@@ -25,11 +26,13 @@ async function openModal() {
     if (e.target === modal) {
       modal.classList.remove("modal-show");
     }
+    document.querySelector("#phone__menu-id-body").style.overflow = "auto";
   });
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       modal.classList.remove("modal-show");
     }
+    document.querySelector("#phone__menu-id-body").style.overflow = "auto";
   });
 }

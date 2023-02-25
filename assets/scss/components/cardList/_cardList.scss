@@ -1,0 +1,8 @@
+.film-grid {
+  padding: rem(50) 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(rem(220), 1fr));
+  gap: 15px;
+}
+
+@import "../Card/Card";

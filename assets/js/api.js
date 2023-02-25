@@ -42,20 +42,36 @@ async function getFilms() {
         ? (cardName.textContent = el.nameEn)
         : (cardName.textContent = el.nameRu);
 
-      cardYear = templateCard.content.querySelector(".card__year");
-      el.year // check year film
-        ? (cardYear.textContent = el.year)
-        : (cardYear.textContent = "year");
-
-      cardTime = templateCard.content.querySelector(".card__time");
-      el.filmLength // check time film
-        ? (cardTime.textContent = el.filmLength)
-        : (cardTime.textContent = "time");
-
       cardRating = templateCard.content.querySelector(".card__rating");
+      // console.log(el.rating);
+
+      if (el.rating == null) {
+        el.rating = "0";
+      }
+
+      let newRating = el.rating.replace("%", "");
+      if (newRating > 10) {
+        newRating = newRating / 10;
+      }
+
       el.rating // check rating film
-        ? (cardRating.textContent = el.rating)
+        ? (cardRating.textContent = newRating)
         : (cardRating.textContent = "0");
+
+      // check rating for that add class (border style)
+      if (newRating <= 5) {
+        cardRating.classList.add("card__rating-red");
+        cardRating.classList.remove("card__rating-green");
+        cardRating.classList.remove("card__rating-yellow");
+      } else if (newRating > 5 && newRating < 7) {
+        cardRating.classList.add("card__rating-yellow");
+        cardRating.classList.remove("card__rating-green");
+        cardRating.classList.remove("card__rating-red");
+      } else {
+        cardRating.classList.add("card__rating-green");
+        cardRating.classList.remove("card__rating-yellow");
+        cardRating.classList.remove("card__rating-red");
+      }
 
       cardGenres = templateCard.content.querySelector(".card__genres");
       let arrGenre = []; // create empty array for map

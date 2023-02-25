@@ -1,0 +1,23 @@
+.logo {
+  align-items: center;
+  gap: rem(10);
+}
+.logo__img {
+  max-width: rem(100);
+  height: auto;
+
+  @media (max-width: 600px) {
+    max-width: rem(60);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+.logo__title {
+  color: $colorTextOrange;
+  font-size: clamp(rem(16), 1.39vw, rem(20));
+  font-family: $fontFamilyLogo;
+}

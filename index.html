@@ -4,49 +4,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="api.js" defer></script>
-    <script src="modal.js" defer></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/api.js" defer></script>
+    <script src="assets/js/modal.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 
     <title>Document</title>
   </head>
-  <body>
-    <section>
-      <article>
-        <h1>List films top kinopoisk</h1>
-        <p>description</p>
-        <div class="film-grid">
-          <template id="template__card">
-            <div class="card__film">
-              <input type="hidden" class="input__id-hidden" />
-              <div class="card__img">
-                <img src="" alt="" />
+  <body id="phone__menu-id-body">
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__container">
+          <div class="header-wrapper d-fl">
+            <div class="logo d-fl">
+              <div class="logo__img">
+                <img
+                  src="assets/image/icon/logo.svg"
+                  alt="Логотип - Кино на вечер"
+                />
               </div>
-              <h3 class="card__name">Name</h3>
-              <span class="card__year">Year</span>
-              <span class="card__time">Time</span>
-              <span class="card__rating">0</span>
-              <span class="card__genres">genres</span>
+              <span class="logo__title">MoviesEvening</span>
             </div>
-          </template>
+          </div>
         </div>
-      </article>
-    </section>
+      </header>
+      <main>
+        <section class="section__card-list">
+          <div class="card__container">
+            <div class="film-grid">
+              <template id="template__card">
+                <div class="card__film d-fl-col">
+                  <input type="hidden" class="input__id-hidden" />
+                  <div class="card__img">
+                    <img
+                      src="assets/image/photo/default-cinema.jpg"
+                      alt="default-cinema"
+                    />
+                  </div>
+                  <h3 class="card__name">Name</h3>
+                  <span class="card__rating d-fl">0</span>
+                  <span class="card__genres">genres</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </section>
+      </main>
 
-    <div class="modal-wrapper">
-      <div class="modal__card">
-        <h3 class="modal__card-name">Name</h3>
-        <p class="modal__card-description">Description</p>
+      <div class="modal-wrapper">
+        <div class="modal__card">
+          <h3 class="modal__card-name">Name</h3>
+          <p class="modal__card-description">Description</p>
+        </div>
       </div>
-    </div>
 
-    <div class="modal__error-wrapper">
-      <div class="modal__error">
-        <span
-          >ERROR------> TypeError: NetworkError when attempting to fetch
-          resource.</span
-        >
+      <div class="modal__error-wrapper">
+        <div class="modal__error">
+          <span
+            >ERROR------> TypeError: NetworkError when attempting to fetch
+            resource.</span
+          >
+        </div>
       </div>
     </div>
   </body>
