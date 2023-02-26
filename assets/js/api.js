@@ -35,7 +35,7 @@ async function getFilms() {
     // forEach for our element API
     dataFilms.forEach((el) => {
       cardImg = templateCard.content.querySelector(".card__img img"); // use our template and .content + querySelector
-      cardImg.src = el.posterUrl; // get src and assign new src in API el (forEach) + url (posterUrl) in API
+      cardImg.src = el.posterUrlPreview; // get src and assign new src in API el (forEach) + url (posterUrl) in API
 
       cardName = templateCard.content.querySelector(".card__name"); // Name card
       el.nameEn // check name language
@@ -95,7 +95,7 @@ async function getFilms() {
 }
 
 // function for get information film
-async function getInfoFilms(cardFilmId, modalName, modalDescription) {
+async function getInfoFilms(cardFilmId, modalName, modalDescription, modalImg) {
   try {
     const response = await fetch(`${baseUrl}/${cardFilmId}`, {
       method: "GET",
@@ -104,11 +104,13 @@ async function getInfoFilms(cardFilmId, modalName, modalDescription) {
         "Content-Type": "application/json",
       },
     });
-    const dataInfoFilms = await response.json();
+
+    const dataInfoFilms = await response.json(); // response for api
     // console.log(dataInfoFilms);
 
-    modalName.innerText = dataInfoFilms.nameRu;
-    modalDescription.innerText = dataInfoFilms.description;
+    modalName.innerText = dataInfoFilms.nameRu; // name film
+    modalDescription.innerText = dataInfoFilms.description; // description film
+    modalImg.src = dataInfoFilms.posterUrl; // image film
   } catch (error) {
     // check error
     console.log("ERROR------>" + " " + error);
